@@ -1,0 +1,11 @@
+jekyll: &base
+  build: . #turfmedia/docker_s3_website
+  volumes:
+    - .:/website
+  ports:
+    - "4000:4000"
+
+site:
+  <<: *base
+  working_dir: /website
+  command: bash -c 'jekyll build; s3_website push'
