@@ -21,10 +21,10 @@ RUN apk --update add openjdk7-jre
 
 VOLUME ["/website", "/config"]
 
+ADD . /website
+
 WORKDIR /website
 
-COPY Gemfile /website
-COPY Gemfile.lock /website
 RUN bundle install
 
 ENTRYPOINT ["s3_website"]
