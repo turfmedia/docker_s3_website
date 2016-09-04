@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./watcher.rb &
-jekyll serve -s mirror/ --host 0.0.0.0
+ruby ./watcher.rb &
+jekyll serve -s /website/ --host 0.0.0.0

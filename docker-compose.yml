@@ -1,5 +1,6 @@
 jekyll: &base
-  build: . #turfmedia/docker_s3_website
+  # image : turfmedia/docker_s3_website
+  build: .
   volumes:
     - .:/website
   ports:

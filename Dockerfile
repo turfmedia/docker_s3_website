@@ -12,10 +12,14 @@ RUN apk update && \
 		apk add $BUILD_PACKAGES && \
     apk add $RUBY_PACKAGES && \
 		apk add openjdk7-jre && \
+		apk add rsync && \
 		rm -rf /var/cache/apk/* && \
 		gem install bundler
 
-# VOLUME ["/website", "/config"]
+RUN mkdir /website
+RUN mkdir /mirror
+
+VOLUME ["/mirror", "/config"]
 
 ADD . /website
 
@@ -23,4 +27,5 @@ WORKDIR /website
 
 RUN bundle install
 
-CMD ["s3_website --help"]
+CMD ["./run.sh"]
+EXPOSE 4000
